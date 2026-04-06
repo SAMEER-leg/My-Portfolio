@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+/* Luxury amber ↔ deep bronze — single palette for fills, text, glows */
+@theme {
+  --color-amber-gold: #d9a20e;
+  --color-amber-bright: #ffe9a8;
+  --color-amber-muted: #b8890f;
+  --color-amber-dark: #5a3f0a;
+  --color-amber-black: #1a1306;
+  --color-black-deep: #050505;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Fixed header + extra breathing room (matches Hero top padding) */
+    scroll-padding-top: max(6rem, calc(env(safe-area-inset-top, 0px) + 4.5rem));
+    background-color: #030303;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 6.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 7.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Full-page art background (public/site-background.png) + readability wash */
+  body {
+    @apply text-white font-sans overflow-x-hidden antialiased;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+    background-color: #030303;
+    font-feature-settings: "ss01" on, "cv01" on;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-color: #030303;
+    background-image: url("/site-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        ellipse 90% 55% at 50% 0%,
+        rgba(0, 0, 0, 0.38),
+        transparent 58%
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 95% 30%,
+        rgba(0, 0, 0, 0.18),
+        transparent 55%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(3, 3, 3, 0.55),
+        rgba(3, 3, 3, 0.38),
+        rgba(3, 3, 3, 0.62)
+      );
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: rgba(217, 162, 14, 0.38);
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .liquid-filter {
+    filter: url("#liquid-filter");
+  }
+
+  .font-display {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .amber-border {
+    @apply border border-amber-gold/25;
+  }
+
+  .amber-glow {
+    box-shadow:
+      0 0 0 1px rgba(217, 162, 14, 0.1),
+      0 0 44px rgba(217, 162, 14, 0.12),
+      0 25px 50px -12px rgba(0, 0, 0, 0.65);
+  }
+
+  .amber-glow-hover {
+    @apply transition-shadow duration-500;
+  }
+
+  .amber-glow-hover:hover {
+    box-shadow:
+      0 0 0 1px rgba(217, 162, 14, 0.22),
+      0 0 56px rgba(217, 162, 14, 0.16),
+      0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Fills: deep bronze → rich amber → champagne highlight */
+  .amber-gradient {
+    background: linear-gradient(
+      135deg,
+      #2a1f08 0%,
+      #5a3f0a 22%,
+      #b8890f 48%,
+      #d9a20e 72%,
+      #ffe9a8 100%
+    );
+  }
+
+  /* Logo / small lockups — same family as headings, tuned for small sizes */
+  .amber-text-gradient {
+    background: linear-gradient(
+      125deg,
+      #fff9ed 0%,
+      #ffe9a8 30%,
+      #d9a20e 58%,
+      #8a6410 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  /* Section titles & gold headlines — matches amber-gradient story */
+  .amber-heading {
+    background: linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #ffe9a8 20%,
+      #d9a20e 50%,
+      #b8890f 80%,
+      #8a6410 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline;
+    filter: drop-shadow(0 0 40px rgba(217, 162, 14, 0.25));
+  }
+
+  .glass-panel {
+    @apply border border-white/[0.08] bg-white/[0.03] backdrop-blur-2xl;
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+      0 0 0 1px rgba(0, 0, 0, 0.35);
+  }
+
+  .shine-border {
+    position: relative;
+  }
+
+  .shine-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 233, 168, 0.55),
+      rgba(217, 162, 14, 0.35) 35%,
+      rgba(255, 255, 255, 0.06) 55%,
+      rgba(184, 137, 15, 0.35) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  .text-gold {
+    @apply text-amber-gold;
+  }
+
+  .heading-glow {
+    text-shadow:
+      0 0 60px rgba(217, 162, 14, 0.2),
+      0 0 100px rgba(184, 137, 15, 0.08);
+  }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle at 30% 30%, #ffe9a8, #d9a20e);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow:
+    0 0 20px rgba(217, 162, 14, 0.7),
+    0 0 40px rgba(217, 162, 14, 0.28);
+  transition: transform 0.12s ease;
+}
+
+.custom-cursor-follower {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(217, 162, 14, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(
+    circle,
+    rgba(217, 162, 14, 0.08) 0%,
+    transparent 70%
+  );
+  transition:
+    transform 0.18s ease,
+    width 0.35s ease,
+    height 0.35s ease,
+    border-color 0.25s ease;
+}
