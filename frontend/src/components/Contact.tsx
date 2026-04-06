@@ -207,7 +207,7 @@ export default function Contact() {
     window.setTimeout(() => {
       setFormRevealed((open) => !open);
       setCordPulling(false);
-    }, 380);
+    }, 50);
   }, [reduceMotion]);
 
   return (
@@ -333,12 +333,12 @@ export default function Contact() {
                 opacity: formRevealed ? 1 : 0,
                 scaleY: formRevealed ? 1 : reduceMotion ? 1 : 0.94,
               }}
-              transition={{ duration: reduceMotion ? 0.12 : 0.55, ease: [0.22, 1, 0.32, 1] }}
+              transition={{ duration: reduceMotion ? 0.12 : 0.2, ease: [0.22, 1, 0.32, 1] }}
               style={{
                 transformOrigin: 'top center',
                 pointerEvents: formRevealed ? 'auto' : 'none',
                 maxHeight: formRevealed ? 2400 : 0,
-                transition: 'max-height 0.65s cubic-bezier(0.22, 1, 0.36, 1)',
+                transition: 'max-height 0.25s cubic-bezier(0.22, 1, 0.36, 1)',
               }}
               aria-hidden={!formRevealed}
             >
@@ -410,6 +410,7 @@ export default function Contact() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.2, type: 'spring', damping: 22, stiffness: 400 }}
               className="glass-panel relative w-full max-w-md overflow-hidden rounded-[2.5rem] p-8 text-center sm:p-12 amber-glow"
             >
               <div className="mb-8 flex justify-center">

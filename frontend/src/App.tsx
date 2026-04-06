@@ -8,10 +8,12 @@ import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
 import ProjectsPage from './pages/ProjectsPage';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="relative isolate min-h-screen min-h-dvh w-full max-w-[100vw] overflow-x-clip">
         <div className="relative z-10 min-w-0">
           <CustomCursor />
