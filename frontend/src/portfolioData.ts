@@ -7,7 +7,7 @@ export const portfolioData: PortfolioData = {
   profilePic: "/profile.png",
   whatsappNumber: "923293021285",
   whatsappDisplay: "03293021285",
-  email: "abdulqadir12332190@gmail.com",
+  email: "novarevolution90@gmail.com",
   projects: [
     {
       id: "1",
