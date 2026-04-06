@@ -53,7 +53,7 @@ export default function Projects() {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0"
+                className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-1000 lg:grayscale lg:group-hover:grayscale-0"
                 referrerPolicy="no-referrer"
               />
             </div>
