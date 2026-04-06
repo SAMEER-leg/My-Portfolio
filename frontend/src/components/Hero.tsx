@@ -122,12 +122,12 @@ export default function Hero() {
             />
           </motion.div>
 
-          {/* Corner accent — perfectly aligned to the bottom right of the circular frame */}
+          {/* Corner accent — correctly aligned user image badge */}
           <div
-            className="pointer-events-none absolute bottom-[12%] right-[12%] z-30 flex h-10 w-10 items-center justify-center rounded-full border-2 border-amber-gold/30 bg-gradient-to-br from-amber-bright to-amber-dark shadow-[0_0_20px_rgba(217,162,14,0.6)] sm:h-12 sm:w-12"
+            className="pointer-events-none absolute bottom-[12%] right-[12%] z-30 flex h-12 w-12 overflow-hidden items-center justify-center rounded-full border-2 border-amber-gold/30 bg-black shadow-[0_0_20px_rgba(217,162,14,0.6)] sm:h-16 sm:w-16 md:h-20 md:w-20"
             aria-hidden
           >
-            <Sparkles className="h-5 w-5 shrink-0 text-black sm:h-6 sm:w-6" strokeWidth={2} />
+            <img src="/profile-badge.jpg" alt="" className="h-full w-full object-cover shadow-inner" />
           </div>
 
           {/* Decorative elements */}
